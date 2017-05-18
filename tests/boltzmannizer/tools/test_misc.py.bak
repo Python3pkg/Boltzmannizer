@@ -15,8 +15,8 @@ class MemoizedTest(TestCase):
 		num_args = 10
 		num_calls = 5
 
-		records = [[0] * num_args for _ in range(num_fs)]
-		results = [[] for _ in range(num_fs)]
+		records = [[0] * num_args for _ in xrange(num_fs)]
+		results = [[] for _ in xrange(num_fs)]
 
 		@memoized
 		def record_call0(i):
@@ -36,18 +36,18 @@ class MemoizedTest(TestCase):
 
 			return 4 * i
 
-		for i in range(num_args):
-			for _ in range(num_calls):
+		for i in xrange(num_args):
+			for _ in xrange(num_calls):
 				results[0].append(record_call0(i))
 				results[1].append(record_call1(i))
 				results[2].append(record_call2(i))
 
-		records_expected = [[1] * num_args for _ in range(num_fs)]
+		records_expected = [[1] * num_args for _ in xrange(num_fs)]
 		results_expected = []
 
-		results_expected.append([2 * i for i in range(num_args) for _ in range(num_calls)])
-		results_expected.append([3 * i for i in range(num_args) for _ in range(num_calls)])
-		results_expected.append([4 * i for i in range(num_args) for _ in range(num_calls)])
+		results_expected.append([2 * i for i in xrange(num_args) for _ in xrange(num_calls)])
+		results_expected.append([3 * i for i in xrange(num_args) for _ in xrange(num_calls)])
+		results_expected.append([4 * i for i in xrange(num_args) for _ in xrange(num_calls)])
 
 		eq_(records, records_expected)
 		eq_(results, results_expected)
@@ -63,10 +63,10 @@ class ReserverTest(TestCase):
 
 		r = Reserver([], OVERFLOW)
 
-		for _ in range(10):
+		for _ in xrange(10):
 			eq_(r.allocate(), OVERFLOW)
 
-		for _ in range(10):
+		for _ in xrange(10):
 			r.free(OVERFLOW)
 
 		with self.assertRaises(ValueError):

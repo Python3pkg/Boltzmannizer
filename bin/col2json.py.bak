@@ -46,22 +46,22 @@ for line in fileinput.input('-'):
 # Not using a serializer here to preserve the order and shape of the output.
 # The units are hard-coded for the time being, but it doesn't need to be that
 # way.
-print('''{ "format_version": 1
+print '''{ "format_version": 1
 , "k_B": 0.695031
 , "units": { "energy": "cm^-1"
            , "temperature": "K"
            }
-, "levels": [''', end=' ')
+, "levels": [''',
 
 first = True
 
 for e, d in zip(energies, degeneracies):
 	if not first:
-		print('            ,', end=' ')
+		print '            ,',
 	else:
 		first = False
 
-	print('[{0}, {1}]'.format(e, d))
+	print '[{0}, {1}]'.format(e, d)
 
-print('            ]')
-print('}')
+print '            ]'
+print '}'

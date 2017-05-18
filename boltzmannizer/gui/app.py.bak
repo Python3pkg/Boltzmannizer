@@ -361,7 +361,7 @@ class MainFrame(wx.Frame):
 			self._load_data(path)
 
 	def _redraw_plots(self):
-		for name, frame in list(self.plot_frames_2D.items()):
+		for name, frame in self.plot_frames_2D.items():
 			self._redraw_plot(name, frame)
 
 	def _redraw_plot(self, name, frame):
@@ -389,11 +389,11 @@ class MainFrame(wx.Frame):
 		return cur
 
 	def _close_all_plot_frames(self):
-		for frame in list(self.plot_frames_2D.values()):
+		for frame in self.plot_frames_2D.values():
 			if frame:
 				frame.Close()
 
-		for frame in list(self.plot_frames_3D.values()):
+		for frame in self.plot_frames_3D.values():
 			if frame:
 				frame.Close()
 

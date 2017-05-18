@@ -93,7 +93,7 @@ class DataPanel(wx.Panel):
 		associated with the row.
 		"""
 
-		index = self.lst.InsertStringItem(sys.maxsize, str(data[0]))
+		index = self.lst.InsertStringItem(sys.maxint, str(data[0]))
 
 		for i, d in enumerate(data[1:], start=1):
 			self.lst.SetStringItem(index, i, str(d))
@@ -151,7 +151,7 @@ class DataPanel(wx.Panel):
 			self.remove_selected()
 
 	def select_all(self):
-		for i in range(self.lst.GetItemCount()):
+		for i in xrange(self.lst.GetItemCount()):
 			self.lst.Select(i)
 
 	def remove_selected(self):

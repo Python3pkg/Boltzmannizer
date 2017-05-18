@@ -1,4 +1,4 @@
-
+from __future__ import division
 
 from json import load
 from math import exp, log
@@ -49,7 +49,7 @@ class BoltzmannDistribution(object):
 		self.filename = filename
 
 		# Enforce order.
-		for i in range(len(self._energies) - 1):
+		for i in xrange(len(self._energies) - 1):
 			if self._energies[i] >= self._energies[i+1]:
 				raise NonIncreasingEnergies('{0} >= {1}'.format(self._energies[i], self._energies[i+1]))
 
@@ -130,7 +130,7 @@ class BoltzmannDistribution(object):
 		Iterator for the level indices.
 		"""
 
-		return range(len(self.energies))
+		return xrange(len(self.energies))
 
 	@property
 	def num_levels(self):

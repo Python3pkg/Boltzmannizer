@@ -34,8 +34,8 @@ class BoltzmannDistributionTest(TestCase):
 		with self.assertRaises(ValueError):
 			BoltzmannDistribution(0, [], [])
 
-		for k_B in range(1, 10):
-			for T in range(1, 10):
+		for k_B in xrange(1, 10):
+			for T in xrange(1, 10):
 				bd = BoltzmannDistribution(k_B, [], [])
 
 				assert_almost_equal(k_B * T * bd.beta(T), 1)
@@ -47,7 +47,7 @@ class BoltzmannDistributionTest(TestCase):
 
 		bd = BoltzmannDistribution(0.5, [1, 2, 3], [3, 2, 1])
 
-		eq_(list(bd.levels), list(range(3)))
+		eq_(list(bd.levels), range(3))
 		eq_(bd.k_B, 0.5)
 		assert_array_equal(bd.energies, [1, 2, 3])
 		assert_array_equal(bd.degeneracies, [3, 2, 1])

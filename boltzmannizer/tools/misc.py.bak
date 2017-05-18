@@ -10,7 +10,7 @@ def memoized(f):
 
 	@wraps(f)
 	def wrapper(*args, **kwargs):
-		key = (args, frozenset(list(kwargs.items())))
+		key = (args, frozenset(kwargs.items()))
 
 		if key in cache:
 			return cache[key]
